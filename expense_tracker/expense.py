@@ -6,6 +6,6 @@ def make_expense(date_text, category, description, amount_text):
         "date": date_text,
         "category": category,
         "description": description,
-        "amount": floa(amount_text),
+        "amount": float(amount_text),
     }
   
