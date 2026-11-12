@@ -8,4 +8,4 @@ def make_expense(date_text, category, description, amount_text):
         "description": description,
         "amount": float(amount_text),
     }
-  
+    return expense
