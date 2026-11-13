@@ -29,3 +29,4 @@ def export_to_csv(expenses, filename):
                 make_safe_for_excel(expense["category"]),
                 make_safe_for_excel(expense["description"]),
                 "{:.2f}".format(expense["amount"]),
+            ])

@@ -29,5 +29,22 @@ def filter_by_category(expenses, category):
             results.append(expense)
     return results
 
+def filter_expenses(expenses, start_date="", end_date="", category=""):
+    """Filter by date range AND category at the same time."""
+    results = filter_by_date(expenses, start_date, end_date)
+    results = filter_by_category(results, category)
+    return results
 
+
+def get_categories(expenses):
+    """Return a sorted list of the different categories in use."""
+    categories = []
+    lowercase_seen = []
+    for expense in expenses:
+        name = expense["category"]
+        if name.lower() not in lowercase_seen:
+            lowercase_seen.append(name.lower())
+            categories.append(name)
+    categories.sort()
+    return categories
 
