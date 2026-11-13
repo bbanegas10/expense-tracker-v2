@@ -8,8 +8,8 @@ from expense_tracker.expense import make_expense
 
 def save_expenses(expenses, filename):
     """Write the list of expenses to a JSON file."""
-    with open(filename, "w", encoding="utf8") as file:
-    json.dump(expenses, file, indent=4)
+    with open(filename, "w", encoding="utf-8") as file:
+        json.dump(expenses, file, indent=4)
 
 
 def load_expenses(filename):
@@ -22,7 +22,7 @@ def load_expenses(filename):
         return []
 
     try:
-        with open(filename, "r", encoding="utf8") as file:
+        with open(filename, "r", encoding="utf-8") as file:
             data = json.load(file)
     except json.JSONDecodeError:
         raise ValueError("That file is not valid JSON.")
