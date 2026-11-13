@@ -2,6 +2,7 @@
 # last commit would break when I would type anything other than a number
 # An expense is stored as a dictionary like this:
 # {"date": "2026-11-08", "category": "Food", "description": "Lunch", "amount": 12.5}
+#safety nets needed to be addead (code kept breaking)
 
 from datetime import datetime
 
@@ -26,7 +27,21 @@ def make_expense(date_text, category, description, amount_text):
     category = category.strip()
     description = description.strip()
 
+    if not is_valid_date(date_text):
+        raise ValueError("Date must be in the format YYYY-MM-DD, like 2026-11-08.")
 
+    if category == "":
+        raise ValueError("Category cannot be empty.")
+
+    try:   
+        amount = float(amount_text.replace("$", "").replace(",", ""))
+    except ValueError:
+        raise ValueError("Amount must be a number, like 12.50.")
+
+    if amount <= 0:
+        raise ValueError("Amount must be greater than zero.")
+    
+    
     # round to 2 decimal places (cents)
     amount = round(amount, 2)
 
